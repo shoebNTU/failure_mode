@@ -33,9 +33,16 @@ if uploaded_file is not None:
             Response: {row.iloc[1]}
             """
             in_context_learning.append(in_context_row)
-            
+
+        input_description = f"""
+            Determine the failure mode associated with the following sentence:  
+            sentence: {failure_text}
+            Response:
+            """
+        in_context_learning.append(input_description)
         prompt = prompt_header + newline + newline.join(in_context_learning)
+     
         response = client.text_generation(prompt=prompt,max_new_tokens=5)
         c1,_,_ = st.columns(3)
         with c1:
-            st.info(response)
+            st.success(response)
