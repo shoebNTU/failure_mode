@@ -40,7 +40,7 @@ if uploaded_file is not None:
             Response:
             """
         in_context_learning.append(input_description)
-        prompt = prompt_header + newline + newline.join(in_context_learning)
+        prompt = newline.join(in_context_learning)  + newline + prompt_header
      
         response = client.text_generation(prompt=prompt,max_new_tokens=5)
         c1,_,_ = st.columns(3)
