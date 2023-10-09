@@ -46,3 +46,5 @@ if uploaded_file is not None:
         c1,_,_ = st.columns(3)
         with c1:
             st.success(response)
+else:
+    st.warning("Please upload a csv file (training data) following the instructions in the side-bar")
